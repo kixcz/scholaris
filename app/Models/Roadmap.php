@@ -13,6 +13,8 @@ class Roadmap extends Model
 
     protected $fillable = [
         'user_id',
+        'pillar_id',
+        'domain_id',
         'template_id',
         'title',
         'description',
@@ -61,6 +63,16 @@ class Roadmap extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function pillar(): BelongsTo
+    {
+        return $this->belongsTo(Pillar::class);
+    }
+
+    public function domain(): BelongsTo
+    {
+        return $this->belongsTo(Domain::class);
     }
 
     public function template(): BelongsTo

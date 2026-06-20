@@ -13,6 +13,8 @@ class Notebook extends Model
 
     protected $fillable = [
         'user_id',
+        'pillar_id',
+        'domain_id',
         'name',
         'description',
         'color',
@@ -32,6 +34,16 @@ class Notebook extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function pillar(): BelongsTo
+    {
+        return $this->belongsTo(Pillar::class);
+    }
+
+    public function domain(): BelongsTo
+    {
+        return $this->belongsTo(Domain::class);
     }
 
     public function notes(): HasMany

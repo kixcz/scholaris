@@ -10,8 +10,13 @@ class Vocabulary extends Model
 {
     use HasFactory;
 
+    protected $table = 'vocabulary';
+
     protected $fillable = [
         'user_id',
+        'pillar_id',
+        'domain_id',
+        'topic_id',
         'term',
         'definition',
         'personal_understanding',
@@ -37,6 +42,21 @@ class Vocabulary extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function pillar(): BelongsTo
+    {
+        return $this->belongsTo(Pillar::class);
+    }
+
+    public function domain(): BelongsTo
+    {
+        return $this->belongsTo(Domain::class);
+    }
+
+    public function topic(): BelongsTo
+    {
+        return $this->belongsTo(Topic::class);
     }
 
     public function scopeSearch($query, $search)

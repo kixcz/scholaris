@@ -12,6 +12,9 @@ class Reference extends Model
 
     protected $fillable = [
         'user_id',
+        'pillar_id',
+        'domain_id',
+        'topic_id',
         'title',
         'authors',
         'year',
@@ -47,6 +50,21 @@ class Reference extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function pillar(): BelongsTo
+    {
+        return $this->belongsTo(Pillar::class);
+    }
+
+    public function domain(): BelongsTo
+    {
+        return $this->belongsTo(Domain::class);
+    }
+
+    public function topic(): BelongsTo
+    {
+        return $this->belongsTo(Topic::class);
     }
 
     public function notes()

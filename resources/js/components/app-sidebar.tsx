@@ -4,14 +4,20 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, BookMarked, Notebook, Brain, Target, Route, Link2, BarChart3 } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, BookMarked, Notebook, Brain, Target, Route, Link2, BarChart3, Pill } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
+    
     {
         title: 'Dashboard',
         url: '/dashboard',
         icon: LayoutGrid,
+    },
+    {
+        title: 'Pillars',
+        url: '/pillars',
+        icon: Pill,
     },
     {
         title: 'References',

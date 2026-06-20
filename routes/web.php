@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotebookController;
+use App\Http\Controllers\PillarController;
+use App\Http\Controllers\RoadmapController;
+use App\Http\Controllers\VocabularyController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -8,30 +13,28 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Pillars Module
+    Route::resource('pillars', PillarController::class)->except(['show', 'edit', 'create']);
+
+    // Notebooks Module
+    Route::resource('notebooks', NotebookController::class)->except(['show', 'edit', 'create']);
+
+    // Vocabulary Module
+    Route::resource('vocabulary', VocabularyController::class)->except(['show', 'edit', 'create']);
+
+    // Roadmaps Module
+    Route::resource('roadmaps', RoadmapController::class)->except(['show', 'edit', 'create']);
 
     // Module routes
     Route::get('references', function () {
         return Inertia::render('references');
     })->name('references');
 
-    Route::get('notebooks', function () {
-        return Inertia::render('notebooks');
-    })->name('notebooks');
-
-    Route::get('vocabulary', function () {
-        return Inertia::render('vocabulary');
-    })->name('vocabulary');
-
     Route::get('weekly-goals', function () {
         return Inertia::render('weekly-goals');
     })->name('weekly-goals');
-
-    Route::get('roadmaps', function () {
-        return Inertia::render('roadmaps');
-    })->name('roadmaps');
 
     Route::get('links', function () {
         return Inertia::render('links');
